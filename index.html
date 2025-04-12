@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Oferta Especial Limitada!</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        header {
+            background-color: #ff5722;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .warning {
+            background-color: #ffeb3b;
+            padding: 15px;
+            border-left: 5px solid #ffc107;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        .info-container {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            margin: 0;
+            font-size: 28px;
+        }
+        h2 {
+            color: #d32f2f;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 10px;
+        }
+        .info-item {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border-radius: 4px;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #2196f3;
+        }
+        button {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+        button:hover {
+            background-color: #388e3c;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>¡Felicidades! Eres nuestro visitante número 1,000</h1>
+        <p>Reclama tu premio especial haciendo clic abajo</p>
+    </header>
+
+    <div class="warning">
+        <p><strong>⚠ ADVERTENCIA:</strong> Esta es una demostración educativa. En una situación real, esta información podría ser utilizada para ataques de ciberseguridad.</p>
+    </div>
+
+    <div class="info-container">
+        <h2>Información recopilada de tu dispositivo:</h2>
+        <div id="device-info">
+            <div class="info-item">
+                <span class="info-label">Dirección IP Pública:</span> <span id="ip">Detectando...</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">User Agent:</span> <span id="user-agent"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Sistema Operativo:</span> <span id="os"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Navegador:</span> <span id="browser"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Resolución de pantalla:</span> <span id="screen-res"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Tipo de Dispositivo:</span> <span id="device-type"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Idiomas del navegador:</span> <span id="languages"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Zona horaria:</span> <span id="timezone"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Cookies habilitadas:</span> <span id="cookies"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Ubicación aproximada:</span> <span id="location">Cargando...</span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Proveedor de Internet (ISP):</span> <span id="isp">Cargando...</span>
+            </div>
+        </div>
+
+        <button id="show-more">Mostrar más detalles técnicos</button>
+
+        <div id="more-info" class="hidden">
+            <div class="info-item">
+                <span class="info-label">Arquitectura CPU:</span> <span id="cpu-arch"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Núcleos de CPU:</span> <span id="cpu-cores"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Memoria RAM:</span> <span id="device-memory"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">Conexión:</span> <span id="connection"></span>
+            </div>
+            <div class="info-item">
+                <span class="info-label">WebGL Renderer:</span> <span id="webgl"></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Detección básica del navegador y SO
+        const userAgent = navigator.userAgent;
+        const platform = navigator.platform;
+        
+        // Mostrar User Agent
+        document.getElementById('user-agent').textContent = userAgent;
+        
+        // Detectar sistema operativo
+        let os = "Desconocido";
+        if (userAgent.includes("Windows")) os = "Windows";
+        else if (userAgent.includes("Mac")) os = "MacOS";
+        else if (userAgent.includes("Linux")) os = "Linux";
+        else if (userAgent.includes("Android")) os = "Android";
+        else if (userAgent.includes("iOS")) os = "iOS";
+        document.getElementById('os').textContent = os;
+        
+        // Detectar navegador
+        let browser = "Desconocido";
+        if (userAgent.includes("Firefox")) browser = "Firefox";
+        else if (userAgent.includes("Chrome")) browser = "Chrome";
+        else if (userAgent.includes("Safari")) browser = "Safari";
+        else if (userAgent.includes("Edg")) browser = "Edge";
+        else if (userAgent.includes("Opera")) browser = "Opera";
+        document.getElementById('browser').textContent = browser;
+        
+        // Resolución de pantalla
+        document.getElementById('screen-res').textContent = `${screen.width} × ${screen.height} (${window.innerWidth} × ${window.innerHeight} visible)`;
+        
+        // Tipo de dispositivo
+        const isMobile = /Mobi|Android/i.test(userAgent);
+        document.getElementById('device-type').textContent = isMobile ? "Dispositivo móvil" : "Computadora";
+        
+        // Idiomas
+        document.getElementById('languages').textContent = navigator.languages ? navigator.languages.join(', ') : navigator.language;
+        
+        // Zona horaria
+        document.getElementById('timezone').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        
+        // Cookies habilitadas
+        document.getElementById('cookies').textContent = navigator.cookieEnabled ? "Sí" : "No";
+        
+        // Obtener IP pública y ubicación aproximada
+        fetch('https://api.ipify.org?format=json')
+            .then(response => response.json())
+            .then(data => {
+                const ip = data.ip;
+                document.getElementById('ip').textContent = ip;
+                
+                // Usar ipapi para obtener información de ubicación e ISP
+                return fetch(`https://ipapi.co/${ip}/json/`);
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('location').textContent = 
+                    `${data.city || 'Desconocido'}, ${data.region || 'Desconocido'}, ${data.country_name || 'Desconocido'}`;
+                document.getElementById('isp').textContent = data.org || 'Desconocido';
+            })
+            .catch(error => {
+                document.getElementById('location').textContent = "No se pudo obtener (API limitada)";
+                document.getElementById('isp').textContent = "No se pudo obtener (API limitada)";
+            });
+        
+        // Obtener geolocalización precisa (requiere permiso del usuario)
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(
+                position => {
+                    const locationText = `Precisa: ${position.coords.latitude.toFixed(4)}, ${position.coords.longitude.toFixed(4)}`;
+                    const currentLocation = document.getElementById('location').textContent;
+                    document.getElementById('location').textContent = `${currentLocation} | ${locationText}`;
+                },
+                () => {
+                    // El usuario denegó el permiso
+                }
+            );
+        }
+        
+        // Mostrar más información técnica al hacer clic en el botón
+        document.getElementById('show-more').addEventListener('click', function() {
+            const moreInfo = document.getElementById('more-info');
+            moreInfo.classList.toggle('hidden');
+            
+            // Detalles técnicos adicionales
+            try {
+                // Arquitectura CPU (no siempre disponible)
+                const cpuArch = navigator.cpuClass || navigator.oscpu || 'Desconocido';
+                document.getElementById('cpu-arch').textContent = cpuArch;
+                
+                // Núcleos de CPU
+                const cores = navigator.hardwareConcurrency || 'Desconocido';
+                document.getElementById('cpu-cores').textContent = cores;
+                
+                // Memoria del dispositivo (solo en algunos navegadores)
+                if (navigator.deviceMemory) {
+                    document.getElementById('device-memory').textContent = `${navigator.deviceMemory} GB`;
+                } else {
+                    document.getElementById('device-memory').textContent = 'Desconocido';
+                }
+                
+                // Tipo de conexión
+                if (navigator.connection) {
+                    const connection = navigator.connection;
+                    let connectionInfo = `${connection.effectiveType || 'Desconocido'}`;
+                    if (connection.downlink) connectionInfo += `, ${connection.downlink} Mbps`;
+                    document.getElementById('connection').textContent = connectionInfo;
+                } else {
+                    document.getElementById('connection').textContent = 'Desconocido';
+                }
+                
+                // Información de WebGL (puede ser única para fingerprinting)
+                const canvas = document.createElement('canvas');
+                const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+                if (gl) {
+                    const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+                    if (debugInfo) {
+                        const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+                        document.getElementById('webgl').textContent = renderer || 'Desconocido';
+                    }
+                }
+            } catch (e) {
+                console.error("Error al obtener información técnica:", e);
+            }
+            
+            // Cambiar texto del botón
+            this.textContent = moreInfo.classList.contains('hidden') ? 
+                'Mostrar más detalles técnicos' : 'Ocultar detalles técnicos';
+        });
+    </script>
+</body>
+</html>
