@@ -5,7 +5,7 @@
 [![Open Source](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://opensource.org/)
 
 <div align="center">
-  <img src="https://media.giphy.com/media/QssGEmpkyEOhBCb7eT/giphy.gif" width="300" alt="Hacker ético">
+  <img src="https://media.giphy.com/media/ibolLe3mOqHE3PQTtk/giphy.gif" width="350" alt="Cifrado de datos">
 </div>
 
 ## 🔍 ¿Qué es esto?
