@@ -2,11 +2,10 @@
 
 ¡Bienvenido/a al repositorio más revelador de GitHub! 🌐 Este proyecto demuestra cómo los sitios web pueden recopilar información de tu dispositivo **¡en tiempo real!**
 
-[![Licencia](https://img.shields.io/badge/Licencia-MIT-green.svg)](LICENSE)
 [![Open Source](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://opensource.org/)
 
 <div align="center">
-  <img src="https://media.giphy.com/media/3ohs4kI2X9r7O8ZtoA/giphy.gif" width="400" alt="Demo animada">
+  <img src="https://media.giphy.com/media/Ll3JnNNGdDfvsGuVvT/giphy.gif" width="400" alt="Seguridad digital">
 </div>
 
 ## 🔍 ¿Qué es esto?
