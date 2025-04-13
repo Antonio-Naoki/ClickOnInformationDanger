@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Oferta Especial Limitada!</title>
+    <title>¡Asi de Facil!</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -13,6 +14,7 @@
             background-color: #f0f0f0;
             color: #333;
         }
+
         header {
             background-color: #ff5722;
             color: white;
@@ -21,6 +23,7 @@
             text-align: center;
             margin-bottom: 20px;
         }
+
         .warning {
             background-color: #ffeb3b;
             padding: 15px;
@@ -28,31 +31,37 @@
             margin-bottom: 20px;
             color: #333;
         }
+
         .info-container {
             background-color: white;
             padding: 25px;
             border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         h1 {
             margin: 0;
             font-size: 28px;
         }
+
         h2 {
             color: #d32f2f;
             border-bottom: 2px solid #e0e0e0;
             padding-bottom: 10px;
         }
+
         .info-item {
             margin-bottom: 10px;
             padding: 10px;
             background-color: #f9f9f9;
             border-radius: 4px;
         }
+
         .info-label {
             font-weight: bold;
             color: #2196f3;
         }
+
         button {
             background-color: #4caf50;
             color: white;
@@ -63,22 +72,26 @@
             font-size: 16px;
             margin-top: 20px;
         }
+
         button:hover {
             background-color: #388e3c;
         }
+
         .hidden {
             display: none;
         }
     </style>
 </head>
+
 <body>
     <header>
-        <h1>¡Felicidades! Eres nuestro visitante número 1,000</h1>
-        <p>Reclama tu premio especial haciendo clic abajo</p>
+        <h1>¡Felicidades! Eres nuestro visitante número que importa</h1>
+        <p>Eres uno mas en el sistema.</p>
     </header>
 
     <div class="warning">
-        <p><strong>⚠ ADVERTENCIA:</strong> Esta es una demostración educativa. En una situación real, esta información podría ser utilizada para ataques de ciberseguridad.</p>
+        <p><strong>⚠ ADVERTENCIA:</strong> Esta es una demostración educativa. En una situación real, esta información
+            podría ser utilizada para ataques de ciberseguridad.</p>
     </div>
 
     <div class="info-container">
@@ -141,22 +154,22 @@
     </div>
 
     <script>
-        // Detección básica del navegador y SO
-        const userAgent = navigator.userAgent;
+        // Detección mejorada del sistema operativo
+        const userAgent = navigator.userAgent.toLowerCase(); // Convertir a minúsculas para mejor detección
         const platform = navigator.platform;
-        
-        // Mostrar User Agent
-        document.getElementById('user-agent').textContent = userAgent;
-        
-        // Detectar sistema operativo
+
+        // Mostrar User Agent (original)
+        document.getElementById('user-agent').textContent = navigator.userAgent;
+
+        // Detectar sistema operativo (versión corregida)
         let os = "Desconocido";
-        if (userAgent.includes("Windows")) os = "Windows";
-        else if (userAgent.includes("Mac")) os = "MacOS";
-        else if (userAgent.includes("Linux")) os = "Linux";
-        else if (userAgent.includes("Android")) os = "Android";
-        else if (userAgent.includes("iOS")) os = "iOS";
+        if (userAgent.includes("windows")) os = "Windows";
+        else if (userAgent.includes("mac")) os = "MacOS";
+        else if (userAgent.includes("android")) os = "Android"; // Comprobamos Android antes que Linux
+        else if (userAgent.includes("linux")) os = "Linux";
+        else if (userAgent.includes("ios")) os = "iOS";
         document.getElementById('os').textContent = os;
-        
+
         // Detectar navegador
         let browser = "Desconocido";
         if (userAgent.includes("Firefox")) browser = "Firefox";
@@ -165,36 +178,36 @@
         else if (userAgent.includes("Edg")) browser = "Edge";
         else if (userAgent.includes("Opera")) browser = "Opera";
         document.getElementById('browser').textContent = browser;
-        
+
         // Resolución de pantalla
         document.getElementById('screen-res').textContent = `${screen.width} × ${screen.height} (${window.innerWidth} × ${window.innerHeight} visible)`;
-        
+
         // Tipo de dispositivo
         const isMobile = /Mobi|Android/i.test(userAgent);
         document.getElementById('device-type').textContent = isMobile ? "Dispositivo móvil" : "Computadora";
-        
+
         // Idiomas
         document.getElementById('languages').textContent = navigator.languages ? navigator.languages.join(', ') : navigator.language;
-        
+
         // Zona horaria
         document.getElementById('timezone').textContent = Intl.DateTimeFormat().resolvedOptions().timeZone;
-        
+
         // Cookies habilitadas
         document.getElementById('cookies').textContent = navigator.cookieEnabled ? "Sí" : "No";
-        
+
         // Obtener IP pública y ubicación aproximada
         fetch('https://api.ipify.org?format=json')
             .then(response => response.json())
             .then(data => {
                 const ip = data.ip;
                 document.getElementById('ip').textContent = ip;
-                
+
                 // Usar ipapi para obtener información de ubicación e ISP
                 return fetch(`https://ipapi.co/${ip}/json/`);
             })
             .then(response => response.json())
             .then(data => {
-                document.getElementById('location').textContent = 
+                document.getElementById('location').textContent =
                     `${data.city || 'Desconocido'}, ${data.region || 'Desconocido'}, ${data.country_name || 'Desconocido'}`;
                 document.getElementById('isp').textContent = data.org || 'Desconocido';
             })
@@ -202,7 +215,7 @@
                 document.getElementById('location').textContent = "No se pudo obtener (API limitada)";
                 document.getElementById('isp').textContent = "No se pudo obtener (API limitada)";
             });
-        
+
         // Obtener geolocalización precisa (requiere permiso del usuario)
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
@@ -216,29 +229,29 @@
                 }
             );
         }
-        
+
         // Mostrar más información técnica al hacer clic en el botón
-        document.getElementById('show-more').addEventListener('click', function() {
+        document.getElementById('show-more').addEventListener('click', function () {
             const moreInfo = document.getElementById('more-info');
             moreInfo.classList.toggle('hidden');
-            
+
             // Detalles técnicos adicionales
             try {
                 // Arquitectura CPU (no siempre disponible)
                 const cpuArch = navigator.cpuClass || navigator.oscpu || 'Desconocido';
                 document.getElementById('cpu-arch').textContent = cpuArch;
-                
+
                 // Núcleos de CPU
                 const cores = navigator.hardwareConcurrency || 'Desconocido';
                 document.getElementById('cpu-cores').textContent = cores;
-                
+
                 // Memoria del dispositivo (solo en algunos navegadores)
                 if (navigator.deviceMemory) {
                     document.getElementById('device-memory').textContent = `${navigator.deviceMemory} GB`;
                 } else {
                     document.getElementById('device-memory').textContent = 'Desconocido';
                 }
-                
+
                 // Tipo de conexión
                 if (navigator.connection) {
                     const connection = navigator.connection;
@@ -248,7 +261,7 @@
                 } else {
                     document.getElementById('connection').textContent = 'Desconocido';
                 }
-                
+
                 // Información de WebGL (puede ser única para fingerprinting)
                 const canvas = document.createElement('canvas');
                 const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
@@ -262,11 +275,12 @@
             } catch (e) {
                 console.error("Error al obtener información técnica:", e);
             }
-            
+
             // Cambiar texto del botón
-            this.textContent = moreInfo.classList.contains('hidden') ? 
+            this.textContent = moreInfo.classList.contains('hidden') ?
                 'Mostrar más detalles técnicos' : 'Ocultar detalles técnicos';
         });
     </script>
 </body>
+
 </html>
