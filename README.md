@@ -1,0 +1,35 @@
+# 🕵️♂️ ClickOnInformationDanger - Demostración Educativa de Huella Digital
+
+¡Bienvenido/a al repositorio más revelador de GitHub! 🌐 Este proyecto demuestra cómo los sitios web pueden recopilar información de tu dispositivo **¡en tiempo real!**
+
+[![Licencia](https://img.shields.io/badge/Licencia-MIT-green.svg)](LICENSE)
+[![Open Source](https://badges.frapsoft.com/os/v2/open-source.svg?v=103)](https://opensource.org/)
+
+<div align="center">
+  <img src="https://media.giphy.com/media/3ohs4kI2X9r7O8ZtoA/giphy.gif" width="400" alt="Demo animada">
+</div>
+
+## 🔍 ¿Qué es esto?
+
+Una página web interactiva que muestra toda la información que puede detectar de tu dispositivo. Perfecto para:
+- 🎓 Educación en ciberseguridad
+- 🛡️ Concienciación sobre privacidad digital
+- 🧪 Experimentar con técnicas de fingerprinting
+
+## 🚀 Características Principales
+- ✅ Detección precisa de SO
+- 📍 Geolocalización aproximada y precisa (con permiso)
+- 🖥️ Información técnica detallada del dispositivo
+- 📱 Diseño responsive para móviles y desktop
+- ⚠️ Advertencias educativas integradas
+- 🛠️ Detección de hardware (CPU, RAM, GPU)
+
+## 🖼️ Demostración en Vivo
+http://adorable-chaja-bcc130.netlify.app
+
+## 🛠️ Tecnologías Utilizadas
+- **HTML5** + **CSS3** Moderno
+- **JavaScript** Vanilla (¡Sin frameworks!)
+- API de Geolocalización
+- [ipapi.co](https://ipapi.co/) para datos de IP
+- Fingerprinting de dispositivo
