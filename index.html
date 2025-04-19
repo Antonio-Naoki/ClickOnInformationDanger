@@ -263,28 +263,62 @@
             }
         }
 
-        // Función para detectar información de batería (si está disponible)
+        // Función MEJORADA y CORREGIDA para detectar información de batería
         async function detectBatteryInfo() {
+            const batteryElement = document.getElementById('battery');
+            
             try {
-                if ('getBattery' in navigator) {
-                    const battery = await navigator.getBattery();
-                    let info = '';
+                if (typeof navigator.getBattery === 'function') {
+                    const batteryPromise = navigator.getBattery();
+                    const timeoutPromise = new Promise((_, reject) => 
+                        setTimeout(() => reject(new Error('Timeout')), 2000));
                     
-                    info += `Nivel: ${Math.round(battery.level * 100)}%`;
-                    info += `, Cargando: ${battery.charging ? 'Sí' : 'No'}`;
+                    const battery = await Promise.race([batteryPromise, timeoutPromise]);
                     
-                    if (battery.chargingTime !== Infinity) {
-                        info += `, Tiempo carga: ${battery.chargingTime}s`;
-                    }
-                    if (battery.dischargingTime !== Infinity) {
-                        info += `, Tiempo descarga: ${battery.dischargingTime}s`;
-                    }
+                    const formatBatteryInfo = (b) => {
+                        let info = `Nivel: ${Math.round(b.level * 100)}% | `;
+                        info += `Cargando: ${b.charging ? 'Sí' : 'No'}`;
+                        
+                        if (b.charging && b.chargingTime !== Infinity) {
+                            const hours = Math.floor(b.chargingTime / 3600);
+                            const mins = Math.floor((b.chargingTime % 3600) / 60);
+                            info += ` | Tiempo carga: ${hours}h ${mins}m`;
+                        }
+                        
+                        if (!b.charging && b.dischargingTime !== Infinity) {
+                            const hours = Math.floor(b.dischargingTime / 3600);
+                            const mins = Math.floor((b.dischargingTime % 3600) / 60);
+                            info += ` | Autonomía: ${hours}h ${mins}m`;
+                        }
+                        
+                        return info;
+                    };
                     
-                    return info;
+                    batteryElement.textContent = formatBatteryInfo(battery);
+                    batteryElement.classList.remove('loading');
+                    
+                    // Listeners para actualizaciones en tiempo real
+                    battery.addEventListener('chargingchange', () => {
+                        batteryElement.textContent = formatBatteryInfo(battery);
+                    });
+                    
+                    battery.addEventListener('levelchange', () => {
+                        batteryElement.textContent = formatBatteryInfo(battery);
+                    });
+                    
+                    return;
                 }
-                return 'API no soportada';
-            } catch (e) {
-                return 'Error al detectar';
+                
+                throw new Error('API no disponible');
+                
+            } catch (error) {
+                // Fallback para navegadores modernos
+                if (navigator.userAgentData && navigator.userAgentData.mobile) {
+                    batteryElement.textContent = "Información no disponible por políticas de privacidad";
+                } else {
+                    batteryElement.textContent = "API de batería no soportada en este navegador";
+                }
+                batteryElement.classList.remove('loading');
             }
         }
 
