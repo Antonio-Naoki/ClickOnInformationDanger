@@ -24,7 +24,7 @@ Una página web interactiva que muestra toda la información que puede detectar 
 - 🛠️ Detección de hardware (CPU, RAM, GPU)
 
 ## 🖼️ Demostración en Vivo
-https://clickoninformationdanger.netlify.app
+`https://clickoninformationdanger.netlify.app`
 
 ## 🛠️ Tecnologías Utilizadas
 - **HTML5** + **CSS3** Moderno
